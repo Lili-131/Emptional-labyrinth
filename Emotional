@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Эмоциональный лабиринт</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+    .button {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #6c63ff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #5753d5;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Эмоциональный лабиринт</h1>
+  <p id="story">Вы находитесь в начале своего эмоционального пути. Перед вами два пути: один ведёт к яркому солнцу, а другой — к туманному лесу. Куда вы пойдёте?</p>
+  <button class="button" onclick="choosePath('sun')">Солнечный путь</button>
+  <button class="button" onclick="choosePath('forest')">Туманный лес</button>
+
+  <script>
+    function choosePath(choice) {
+      const story = document.getElementById('story');
+      if (choice === 'sun') {
+        story.innerText = 'Вы выбрали солнечный путь. Радость наполняет вас, но на вашем пути встречается грустный путник. Поможете ему?';
+        document.body.innerHTML += '<button class="button" onclick="helpTraveler()">Помочь</button>';
+        document.body.innerHTML += '<button class="button" onclick="ignoreTraveler()">Игнорировать</button>';
+      } else if (choice === 'forest') {
+        story.innerText = 'Вы выбрали туманный лес. Здесь темно и страшно, но впереди светится огонёк. Попробуете подойти?';
+        document.body.innerHTML += '<button class="button" onclick="approachLight()">Подойти</button>';
+        document.body.innerHTML += '<button class="button" onclick="runAway()">Убежать</button>';
+      }
+    }
+
+    function helpTraveler() {
+      document.getElementById('story').innerText = 'Вы помогли путнику, и он подарил вам магический кристалл радости. Конец!';
+    }
+
+    function ignoreTraveler() {
+      document.getElementById('story').innerText = 'Вы прошли мимо путника, но чувствуете себя немного виноватым. Конец!';
+    }
+
+    function approachLight() {
+      document.getElementById('story').innerText = 'Вы подошли к огоньку и нашли друга, который помог вам преодолеть страх. Конец!';
+    }
+
+    function runAway() {
+      document.getElementById('story').innerText = 'Вы убежали, но страх всё равно остался с вами. Конец!';
+    }
+  </script>
+</body>
+</html>
